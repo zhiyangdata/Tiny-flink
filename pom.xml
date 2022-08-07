@@ -6,11 +6,16 @@
 
     <groupId>org.team3090</groupId>
     <artifactId>Tiny-flink</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>flink-verification</module>
+        <module>flink-core</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-    
+
 </project>

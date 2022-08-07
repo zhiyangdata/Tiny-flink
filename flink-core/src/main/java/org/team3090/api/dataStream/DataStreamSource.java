@@ -1,7 +1,8 @@
 package org.team3090.api.dataStream;
 
 
-import org.team3090.api.source.Source;
+
+import org.team3090.api.source.SourceFunction;
 
 /**
  * @BelongsProject: Tiny-flink
@@ -16,7 +17,7 @@ public class DataStreamSource<T> extends DataStream {
     public DataStreamSource(){
         sourceContext=new SourceContext<>();
     }
-    public DataStreamSource<T> addSource(Source<T> source){
+    public DataStreamSource<T> addSource(SourceFunction<T> source){
         return new DataStreamSource<>();
     }
 }

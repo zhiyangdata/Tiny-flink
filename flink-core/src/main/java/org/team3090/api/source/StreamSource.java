@@ -1,8 +1,8 @@
 package org.team3090.api.source;
 
 import org.team3090.api.common.Collect;
-import org.team3090.api.common.function.Function;
 import org.team3090.api.operators.AbstractUdfStreamOperator;
+
 
 /**
  * @BelongsProject: Tiny-flink
