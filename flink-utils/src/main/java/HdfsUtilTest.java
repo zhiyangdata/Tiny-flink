@@ -1,5 +1,10 @@
 import java.util.concurrent.ExecutionException;
 
+/**
+ * @Description Hdfs测试类
+ * @Author ws
+ * @Date 2022/08/11
+ */
 public class HdfsUtilTest {
     public static void main(String[] args) throws Exception {
         HdfsUtil test = new HdfsUtil();

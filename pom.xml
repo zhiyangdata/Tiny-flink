@@ -11,6 +11,7 @@
     <modules>
         <module>flink-verification</module>
         <module>flink-core</module>
+        <module>flink-utils</module>
     </modules>
 
     <properties>

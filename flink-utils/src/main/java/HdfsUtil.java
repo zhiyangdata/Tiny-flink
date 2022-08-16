@@ -6,6 +6,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
+
+/**
+ * @Description Hdfs工具类，提供连接，上传，下载等服务
+ * @Author ws
+ * @Date 2022/08/11
+ */
 public class HdfsUtil {
     Configuration configuration = null;
     FileSystem fileSystem = null;
