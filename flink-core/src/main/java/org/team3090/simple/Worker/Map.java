@@ -12,6 +12,8 @@ public class Map implements Runnable{
     String udf="com.team.map";
     public void run(){
         //通过反射调用udf
+
+
     }
 
 }
