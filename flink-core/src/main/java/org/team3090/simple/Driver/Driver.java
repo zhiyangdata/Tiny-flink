@@ -1,5 +1,7 @@
 package org.team3090.simple.Driver;
 
+import java.util.List;
+
 /**
  * @BelongsProject: Tiny-flink
  * @BelongsPackage: org.team3090.simple.Driver
@@ -10,8 +12,8 @@ package org.team3090.simple.Driver;
  */
 public class Driver {
     public static void main(String[] args) {
-        Config config = new Config("/usr/data/wordcount.txt");
-        String[] tasks = config.scheduler();
+        Config config = new Config("wordcount.json");
+        List<Operator> tasks = config.scheduler();
         Scheduler scheduler = new Scheduler(tasks);
         scheduler.submitJob();
     }

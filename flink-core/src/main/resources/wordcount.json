@@ -1,0 +1,24 @@
+{
+  "pipeline": [
+    {
+      "name":"kafkaSource",
+      "opFunc": "com.team3090.kafkaSource",
+      "parallelism": "1"
+    },
+    {
+      "name":"map",
+      "opFunc": "com.team3090.map",
+      "parallelism": "1"
+    },
+    {
+      "name":"reduce",
+      "opFunc": "com.team3090.reduce",
+      "parallelism": "2"
+    },
+    {
+      "name":"sink",
+      "opFunc": "com.team3090.kafkaSink",
+      "parallelism": "1"
+    }
+  ]
+}
