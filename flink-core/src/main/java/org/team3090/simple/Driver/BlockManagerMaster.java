@@ -10,20 +10,5 @@ package org.team3090.simple.Driver;
  */
 public class BlockManagerMaster {
 
-    //已有
-    //
-
-    //
-
-
-    // 注册 BlockMaster
-
-    //更新Excutor 的 Block 信息，
-
-    //询问所需要的Block 目前所在的位置
-
-    //当 Executor 运行结束需要将Executor 移除
-
-    //
 
 }
