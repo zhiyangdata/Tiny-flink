@@ -14,6 +14,7 @@ public class Scheduler {
     private String[] tasks;
     private Executor worker;
     public Scheduler() {
+
     }
 
     public Scheduler(String[] tasks) {
@@ -22,5 +23,6 @@ public class Scheduler {
     public void submitJob(){
         //向worker提交作业
         worker.submitJob(tasks[0]);
+        //
     }
 }
