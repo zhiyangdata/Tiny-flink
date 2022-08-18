@@ -14,7 +14,9 @@ import org.team3090.simple.Worker.rpcClass.RPCBlockService;
 
 
 public class ThriftServer {
-//    private static int port;
+
+    // runServer:  调用runServer，启动 rpc 服务，以接收上游发送过来的数据
+    // 需要提供 port 作为参数来创建 transport，(host 没有显示定义，应该是默认本机)
 //    private static int port = 8899;
 
     public void runServer(int port){
@@ -25,8 +27,9 @@ public class ThriftServer {
         3.为Protocol创建Processor
         4.创建Server并启动
          */
-        //设置服务器端口  TNonblockingServerSocket-非堵塞服务模型，可以多线程响应客户端请求
+        //设置服务器端口
         try {
+            //TNonblockingServerSocket-非堵塞服务模型，经过测试，可以多线程方式响应客户端请求
             TNonblockingServerSocket serverSocket = new TNonblockingServerSocket(port);
             //参数设置
             THsHaServer.Args arg = new THsHaServer.Args(serverSocket).minWorkerThreads(2).maxWorkerThreads(4);

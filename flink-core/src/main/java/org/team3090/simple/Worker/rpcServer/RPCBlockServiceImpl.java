@@ -13,8 +13,9 @@ public class RPCBlockServiceImpl implements RPCBlockService.Iface {
     //RPCBlockTransfer: 客户端调用该函数，服务端接收到其发送的数据(结构体)，并打印具体的upstreamResult
     //return：如果接收到的字符串不为null ，返回给客户端true，否则返回false
     public boolean RPCBlockTransfer(JsonString JsonString) throws TException{
-        // 获取数据
+        // 解析数据
         String upstreamResult=JsonString.upstreamResult;
+        // 打印 Client 端传输过来的结果数据
         System.out.println("res:"+upstreamResult);
         if(upstreamResult != null ){
             return true;
@@ -22,6 +23,5 @@ public class RPCBlockServiceImpl implements RPCBlockService.Iface {
         else{
             return false;
         }
-
     }
 }

@@ -1,5 +1,5 @@
 package org.team3090.simple.Worker.rpcClient;
-//Sunlly0 2022.8.18
+// Sunlly0 2022.8.18
 // thrift 客户端，调用 RPCBlockTransfer 函数
 // 实现以字符串的形式将上游计算结果传输到下游的thrift服务端
 
@@ -13,32 +13,32 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.apache.thrift.transport.layered.TFramedTransport;
 
-
 public class ThriftClient {
+    // runClient: 当上游要向下游发送数据的时候，调用runClient 函数。
+    // 需要提供 host, port, 传输的String 作为参数
+    //    private static int port =8899;
+    //    private static String host = "39.99.245.209";
 
-//    private static int port =8899;
-//    private static String host = "39.99.245.209";
-
-    public void runClient(int port, String host) {
+    public void runClient(int port, String host,String upstreamResult) {
         trythread td = new trythread();
         td.port=port;
         td.host =host;
+        td.upstreamResult=upstreamResult;
 
-        for (int i = 0; i <1 ; i++) {//循环创建n个线程
+        for (int i = 0; i <1 ; i++) {//循环创建n个线程。此处暂时令 n=1
             Thread t = new Thread(td);
             t.start();
         }
     }
 }
 
-
-
 //客户端可以起多个线程连接服务端
 class trythread implements Runnable{
-//    public static int port =8899;
-//    public static String host = "39.99.245.209";
+
     public int port;
     public String host;
+
+    public String upstreamResult;
 
     // 线程 run 函数，每起一个线程就调用一次 RPC 过程
     public void run(){
@@ -49,9 +49,8 @@ class trythread implements Runnable{
         }
     }
 
-
     public void rpcrun() throws TTransportException,Exception {
-        TTransport transport = new TFramedTransport(new TSocket(host, port), 600);
+        TTransport transport = new TFramedTransport(new TSocket(this.host, this.port), 600);
         //指定编码格式
         TProtocol protocol = new TCompactProtocol(transport);
         //生成客户端
@@ -59,13 +58,14 @@ class trythread implements Runnable{
         try{
             transport.open();
             JsonString jsonString = new JsonString();
-            jsonString.upstreamResult = "test12345678; "+Thread.currentThread().getName();
+//            jsonString.upstreamResult = "test12345678; "+Thread.currentThread().getName();
+            jsonString.upstreamResult=this.upstreamResult;
             //客户端调用 RPC 过程 ：RPCBlockTransfer
             //将包含了上游计算结果的结构体，jsonString，发送给服务端
             Boolean res = client.RPCBlockTransfer(jsonString);
             //如果
             if (res) {
-                System.out.println("传输成功,"+jsonString.upstreamResult);
+                System.out.println("传输成功,内容："+jsonString.upstreamResult);
 
             } else {
                 System.out.println("传输失败");
