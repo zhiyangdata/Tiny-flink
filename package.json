@@ -1,0 +1,33 @@
+{
+  "configall": [
+    {
+      "operatpr":"operatpr名称",
+      "concurrent":"并发度"
+    },
+    {
+      "operatpr":"source",
+      "concurrent":"1"
+    },
+    {
+      "operatpr":"map",
+      "concurrent":"1"
+    }
+  ],
+  "tasks":[
+    {
+      "task":"作业名：reduce*",
+      "func":"作业所需执行方法的路径",
+      "source":"kafka/上一级作业的server端地址",
+      "local":"本作业的server端地址"
+    },
+    {
+      "task":"reduce*",
+      "func":"作业所需执行方法的路径",
+      "source":"ip*:999*",
+      "local":"ip*:999*"
+    },
+    {
+      "task":"reduce*"
+    }
+  ]
+}
