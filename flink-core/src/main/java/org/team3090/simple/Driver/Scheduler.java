@@ -23,7 +23,7 @@ public class Scheduler {
     }
     public void submitJob(){
         int tasknums = tasks.size();
-        for(int a = tasknums-1;a>=0;a--){
+        for(int a = 0;a< tasknums ;a++){
             //向worker提交作业
             worker.submitJob(tasks.get(a),a);   //a 层层 被 用来 分配worker
         }
