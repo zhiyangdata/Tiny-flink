@@ -8,10 +8,16 @@ typedef string String
 
 //传输的对象
 struct JsonString {
-    1:optional String upstreamResult;
+    1:optional String StreamResult;
 }
 
 //提供的服务
 service RPCBlockService{
-    boolean RPCBlockTransfer(1:required JsonString JsonString)
+
+    void RPCBlockTransferPush(1:required JsonString JsonString)
+
+    JsonString RPCBlockTransferPull()
+
+    String RPCBlockTransferBiside(1: String content)
 }
+

@@ -57,19 +57,25 @@ class trythread implements Runnable{
         RPCBlockService.Client client = new RPCBlockService.Client(protocol);
         try{
             transport.open();
-            JsonString jsonString = new JsonString();
-//            jsonString.upstreamResult = "test12345678; "+Thread.currentThread().getName();
-            jsonString.upstreamResult=this.upstreamResult;
-            //客户端调用 RPC 过程 ：RPCBlockTransfer
-            //将包含了上游计算结果的结构体，jsonString，发送给服务端
-            Boolean res = client.RPCBlockTransfer(jsonString);
-            //如果
-            if (res) {
-                System.out.println("传输成功,内容："+jsonString.upstreamResult);
 
-            } else {
-                System.out.println("传输失败");
-            }
+            // Todo:根据需要采用 Push 模式或 Pull 模式
+            JsonString jsonString = new JsonString();
+
+            //Push 尝试
+//            jsonString.upstreamResult = "test12345678; "+Thread.currentThread().getName();
+            jsonString.StreamResult=this.upstreamResult;
+            //客户端调用 RPC 过程 ：RPCBlockTransferPush
+            //将包含了上游计算结果的结构体jsonString，发送给服务端
+            client.RPCBlockTransferPush(jsonString);
+            System.out.println("Push 传输成功,内容："+jsonString.StreamResult);
+
+            //Pull 尝试
+            //客户端调用 RPC 过程 ：RPCBlockTransferPull
+            //服务端将将包含了上游计算结果的结构体jsonString，以return 的方式返回给客户端
+            jsonString=client.RPCBlockTransferPull();
+            System.out.println("Pull 传输成功,内容："+jsonString.StreamResult);
+
+
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
