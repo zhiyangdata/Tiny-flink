@@ -1,7 +1,7 @@
 package org.team3090.simple.Driver;
 
-import com.alibaba.fastjson.JSONObject;
 import org.team3090.simple.Worker.Executor;
+import org.team3090.simple.Worker.Executor2;
 
 import java.util.ArrayList;
 
@@ -14,18 +14,18 @@ import java.util.ArrayList;
  * @Version: 2.0
  *
  */
-public class Scheduler {
+public class Scheduler1 {
     private ArrayList<String> tasks;
-    Executor worker = new Executor();
+     Executor2 worker2;
 
-    public Scheduler(ArrayList<String> tasks) {
+    public Scheduler1(ArrayList<String> tasks) {
         this.tasks = tasks;
     }
     public void submitJob(){
         int tasknums = tasks.size();
-        for(int a = 0;a< tasknums ;a=a+2){
+        for(int a = 1;a< tasknums ;a=a+2){
             //向worker提交作业
-            worker.submitJob(tasks.get(a),a);   //a 层层 被 用来 分配worker
+            worker2.submitJob(tasks.get(a),a);   //a 层层 被 用来 分配worker
         }
     }
 }
