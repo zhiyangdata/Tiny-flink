@@ -10,13 +10,12 @@ import java.util.ArrayList;
  * @Description: 作业提交
  * @Version: 2.0
  */
-public class Driver {
+public class Driver1 {
     public static void main(String[] args) {
-        Config config = new Config("/usr/data/config.txt");
         ReadConfig readConfig = new ReadConfig("./result.json");
         ArrayList<String> tasknames = readConfig.scheduler();
         System.out.println(tasknames);
-        Scheduler scheduler = new Scheduler(tasknames);
-        scheduler.submitJob();
+        Scheduler1 scheduler1 = new Scheduler1(tasknames);
+        scheduler1.submitJob();
     }
 }

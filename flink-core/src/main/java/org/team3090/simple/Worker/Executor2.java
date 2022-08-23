@@ -11,7 +11,7 @@ import java.util.Queue;
  * @Description: 节点上运行端，执行task    ,服务端端口990*
  * @Version: 2.0
  */
-public class Executor {
+public class Executor2 {
     public void submitJob(String taskname,int tasknow){
         //向worker提交作业
         if(taskname.startsWith("source")){
@@ -20,13 +20,13 @@ public class Executor {
             Source source = new Source();
             source.setPost(tasknow+9900);
             new Thread(source).start();
-//        }else if(taskname.startsWith("map")){
-//            Queue<String> queue = new LinkedList<String>();
-//            BlockManager blockManagerMap = new BlockManager();
-//            blockManagerMap.createrpc("map",tasknow,queue);
-//            Map map = new Map();
-//            map.setPost(tasknow+9900);
-//            new Thread(map).start();
+        }else if(taskname.startsWith("map")){
+            Queue<String> queue = new LinkedList<String>();
+            BlockManager blockManagerMap = new BlockManager();
+            blockManagerMap.createrpc("map",tasknow,queue);
+            Map map = new Map();
+            map.setPost(tasknow+9900);
+            new Thread(map).start();
 //        }else if
 //        (taskname.startsWith("reduce")){
 //            BlockManager blockManagerMap = new BlockManager();
